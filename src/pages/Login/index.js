@@ -1,30 +1,34 @@
 import React, {useState} from 'react';
+import {useApiContext} from '../../contexts/apiContext';
+import {Container, Link, ErrorMsg, LoadingIcon, Text} from './styles';
 import  MyInput  from '../../components/MyInput';
 import  SubmitButton from '../../components/SubmitButton';
-import {useNavigation} from '@react-navigation/native';
-import {Container, Link} from './styles';
-import { Text } from 'react-native'
 import Title from '../../components/Title';
 
-export default function Login() {
-
+export default function Login({navigation}) {
+    const {login,loading} = useApiContext();
     const [email,setEmail] = useState('');
-    const [senha,setSenha] = useState('');
-    const navigation = useNavigation();
+    const [password,setPassword] = useState('');
+    const [error,setError] = useState('');
 
-
-    function handleSubmit() {
-        console.log('Email: ' + email);
-        console.log('Senha: ' + senha);
+    async function handleSubmit() {
+        const response = await login({email,password});
+        if (response.error){
+            setError(response.error);
+        } else {
+            navigation.navigate('Tasks');
+        }
+        console.log(response);
     }
 
     return (
-        <Container>
-            <Title text='Sign In'/>
+        <Container behavior='height'>
+            <Title text='Login'/>
             <MyInput label='E-mail:' value={email} onChange={setEmail}/>
-            <MyInput label='Password:' value={senha} onChange={setSenha}/>
-            <SubmitButton text='Login' onClick={handleSubmit}/>
-            <Text>Not registered yet ? <Link onPress={() => navigation.navigate('SingUp') }>Create account</Link></Text>
+            <MyInput label='Password:' value={password} onChange={setPassword}/>
+            <ErrorMsg>{error}</ErrorMsg>
+            <SubmitButton  onClick={handleSubmit}>Confirmar{loading?<LoadingIcon name='rocket' />:null}</SubmitButton>
+            <Text>Not registered yet ? <Link onPress={() => navigation.navigate('SignUp') }>Create account</Link></Text>
         </Container>
     )
 }
