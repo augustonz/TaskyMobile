@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Label } from './styles';
 
-export default function SubmitButton({text,onClick}){
+export default function SubmitButton({children,onClick}){
     return(
         <Container onPress={onClick}>
-            <Label>{text}</Label>
+            <Label>{children}</Label>
         </Container>
     )
 }

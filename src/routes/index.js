@@ -17,7 +17,7 @@ export default function Routes() {
                 component={Login}
             />
             <AppStack.Screen
-                name="SingUp"
+                name="SignUp"
                 component={SingUp}
             />
             <AppStack.Screen
