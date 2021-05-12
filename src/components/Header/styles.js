@@ -1,17 +1,14 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components';
 
-const styles = StyleSheet.create({
-  logo: {
-    width: 60,
-    height: 25
-  },
-  container: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    height: 45,
-    backgroundColor: '#BE70CB',
-    padding: 10
-  }
-});
+export const Container = styled.View`
+  align-items: center;
+  flex-direction: row;
+  height: 45px;
+  background-color: #BE70CB;
+  padding: 10px;
+`
 
-export default styles;
+export const Logo = styled.Image`
+  width: 60px;
+  height: 25px;
+`

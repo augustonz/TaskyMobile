@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import styles from './styles.js';
+import {Container, Logo} from './styles.js';
 
-export default function Header() {
+export default function Header(props) {
+
     return (
-        <View style={styles.container}>
-            <Image style={styles.logo} source={require('../../assets/logo.png')} />
-        </View>
+        <Container>
+            <Logo source={require('../../assets/logo.png')} />
+        </Container>
     )
 }
