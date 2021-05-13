@@ -5,13 +5,14 @@ import Login from '../pages/Login';
 import Header from '../components/Header';
 import SingUp from '../pages/SingUp';
 
+
 const AppStack = createStackNavigator()
 
 export default function Routes() {
     return (
         <AppStack.Navigator
             screenOptions={{ header: Header }}
-            initialRouteName="Login" >
+            initialRouteName="Tasks" >
             <AppStack.Screen
                 name="Login"
                 component={Login}
