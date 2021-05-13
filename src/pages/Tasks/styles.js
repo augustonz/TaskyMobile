@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -14,6 +14,7 @@ export const List = styled.FlatList.attrs({
   contentContainerStyle: {padding: 16},
   ListFooterComponentStyle: {marginTop: 10, color: 636363, fontSize: 16},
 })`
+  width: 100%;
   height: 100%;
 `;
 
@@ -25,4 +26,9 @@ export const Header = styled.View`
 export const LogoutIcon = styled(Icon)`
   color: #000000;
   font-size: 24px;
+`;
+
+export const LoadingIcon = styled(Icon)`
+  color: #000000;
+  font-size: 50px;
 `;

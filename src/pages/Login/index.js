@@ -18,16 +18,15 @@ export default function Login({navigation}) {
         } else {
             navigation.navigate('Tasks');
         }
-        console.log(response);
     }
 
     return (
         <Container behavior='height'>
             <Title text='Login'/>
             <MyInput label='E-mail:' value={email} onChange={setEmail}/>
-            <MyInput label='Password:' value={password} onChange={setPassword}/>
+            <MyInput secure={true} label='Password:' value={password} onChange={setPassword}/>
             <ErrorMsg>{error}</ErrorMsg>
-            <SubmitButton  onClick={handleSubmit}>Confirmar{loading?<LoadingIcon name='rocket' />:null}</SubmitButton>
+            <SubmitButton  onClick={handleSubmit}>Confirmar{loading?<LoadingIcon name='loading1' />:null}</SubmitButton>
             <Text>Not registered yet ? <Link onPress={() => navigation.navigate('SignUp') }>Create account</Link></Text>
         </Container>
     )

@@ -21,7 +21,6 @@ export default function SingUp({navigation}) {
         } else {
             navigation.navigate('Tasks');
         }
-        console.log(response);
     }
 
     return (
@@ -29,7 +28,7 @@ export default function SingUp({navigation}) {
             <Title text='Registrar'/>
             <MyInput label='Nome' value={name} onChange={setName}/>
             <MyInput label='E-mail' value={email} onChange={setEmail}/>
-            <MyInput label='Senha' value={password} onChange={setPassword}/>
+            <MyInput secure={true} label='Senha' value={password} onChange={setPassword}/>
             <ErrorMsg>{error}</ErrorMsg>
             <SubmitButton text='Sing Up' onClick={handleSubmit}>Confirmar{loading?<LoadingIcon name='rocket' />:null}</SubmitButton>
             <Text>Already have an Account? <Link onPress={() => navigation.goBack() }>Sign In</Link></Text>

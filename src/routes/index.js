@@ -11,8 +11,8 @@ const AppStack = createStackNavigator()
 export default function Routes() {
     return (
         <AppStack.Navigator
-            screenOptions={{ header: Header }}
-            initialRouteName="Tasks" >
+            screenOptions={{ header: Header,animationEnabled:false }}
+            initialRouteName="Login" >
             <AppStack.Screen
                 name="Login"
                 component={Login}

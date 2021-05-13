@@ -20,8 +20,8 @@ export async function register(user) {
   return response.data;
 }
 
-export async function logout() {
-  const response = await api.put('users/logout');
+export async function logout(token) {
+  const response = await api.put('users/logout',null,{headers:{'authorization':`Bearer ${token}`}});
   return response.data;
 }
 
