@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Container, Label, Row } from './styles';
 import { useApiContext } from '../../../../contexts/apiContext';
 import MyInput from '../../../../components/MyInput';
@@ -13,6 +13,11 @@ export default function UpdateTask({task,select}){
     const [highPriority, setPriority] = useState(task.highPriority);
     const [error, setError] = useState("");
     
+    useEffect(()=>{
+        setName(task.name);
+        setPriority(task.highPriority);
+    },[task]);
+
     async function handleSubmit() {
 
         if (name.trim()==='') {
