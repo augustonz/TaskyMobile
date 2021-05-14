@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {useApiContext} from '../../contexts/apiContext';
-import {Container, Link, ErrorMsg, LoadingIcon, Text} from './styles';
-import  MyInput  from '../../components/MyInput';
-import  SubmitButton from '../../components/SubmitButton';
+import {Container, Link, ErrorMsg, Text} from './styles';
+import MyInput  from '../../components/MyInput';
+import SubmitButton from '../../components/SubmitButton';
 import Title from '../../components/Title';
+import Loading from '../../components/Loading';
 
 export default function Login({navigation}) {
     const {login,loading} = useApiContext();
@@ -26,7 +27,7 @@ export default function Login({navigation}) {
             <MyInput label='E-mail:' value={email} onChange={setEmail}/>
             <MyInput secure={true} label='Password:' value={password} onChange={setPassword}/>
             <ErrorMsg>{error}</ErrorMsg>
-            <SubmitButton  onClick={handleSubmit}>Confirmar{loading?<LoadingIcon name='loading1' />:null}</SubmitButton>
+            <SubmitButton  onClick={handleSubmit}>Confirmar{loading?<Loading/>:null}</SubmitButton>
             <Text>Not registered yet ? <Link onPress={() => navigation.navigate('SignUp') }>Create account</Link></Text>
         </Container>
     )

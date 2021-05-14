@@ -15,7 +15,7 @@ export default function NewTask(){
     async function handleSubmit() {
 
         if (name.trim()==='') {
-            setError('Por facor, insira o nome da nova task.')
+            setError('Por favor, insira o nome da nova task.')
         }
 
         const response = await addTask({

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
     width: 100%;
     justify-content: center
 `
@@ -9,5 +9,6 @@ export const Text = styled.Text`
     font-size: 24px;
     font-weight: 700;
     color: #83498C;
-    margin-bottom: 24px
+    margin-bottom: 24px;
+    text-align: center
 `

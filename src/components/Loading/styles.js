@@ -7,5 +7,6 @@ export const Container = styled.View`
 `;
 
 export const LoadingIcon = styled(Icon)`
-    color: #000000;
+  font-size: 20px;
+  color: #ffff;
 `

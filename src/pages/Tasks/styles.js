@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   flex-direction: column;
   width: 100%;
-  padding: 16px;
+  padding: 16px 32px;
   background-color: #ffff;
   align-items: center;
 `;
@@ -23,10 +23,7 @@ export const Header = styled.View`
   justify-content: space-between;
 `;
 
-export const LogoutIcon = styled(Icon)`
-  color: #000000;
-  font-size: 24px;
-`;
+
 
 export const LoadingIcon = styled(Icon)`
   color: #000000;

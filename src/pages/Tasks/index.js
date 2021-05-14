@@ -11,14 +11,6 @@ export default function Tasks({navigation}){
 
     const [error,setError] = useState('');
 
-    async function handleSubmitLogout() {
-        const response = await logout();
-        if (response.error){
-            setError(response.error);
-        } else {
-            navigation.goBack();
-        }
-    }
 
     useEffect(()=>{
         refreshTasks();
@@ -29,16 +21,15 @@ export default function Tasks({navigation}){
             
             <Header>
                 <Title text='My Tasks'/>    
-                <LogoutIcon name='user' onPress={handleSubmitLogout}/>
             </Header>
 
-            {loading?<LoadingIcon name='loading1' onPress={handleSubmitLogout}/>:
+            {loading?<LoadingIcon name='spinner'/>:
             <List data={tasks}
-                numColumns='2'
                 keyExtractor = {item => item._id}
                 renderItem={({item})=><Task task={item}/>}
                 ListFooterComponent={<NewTask/>}
                 extraData={tasks}/>}
+            
         </Container>
     )
 }

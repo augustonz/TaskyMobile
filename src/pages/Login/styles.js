@@ -1,16 +1,10 @@
-import styled,{keyframes} from 'styled-components';
-import Icon from 'react-native-vector-icons/AntDesign';
-
-export const LoadingIcon = styled(Icon)`
-    padding-left: 15px;
-    font-size:20px;
-    color: #ffffff;
-`
+import styled from 'styled-components';
 
 export const Container = styled.KeyboardAvoidingView`
     padding: 30px;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100%
 `;
 
