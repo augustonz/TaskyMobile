@@ -1,10 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Title from '../../components/Title';
 import {useApiContext} from './../../contexts/apiContext';
 import Task from './components/Task';
 import NewTask from './components/NewTask';
 import {Container, Header, LoadingIcon, List} from './styles';
-import Loading from '../../components/Loading';
 
 export default function Tasks({navigation}) {
   const {
@@ -24,7 +23,7 @@ export default function Tasks({navigation}) {
       </Header>
 
       {loading ? (
-        <Loading />
+        <LoadingIcon name="spinner" />
       ) : (
         <List
           data={tasks}

@@ -42,7 +42,7 @@ export default function NewTask() {
         size="small"
         onToggle={isOn => setPriority(isOn)}
       />
-      <SubmitButton onClick={handleSubmit}>Save</SubmitButton>
+      <SubmitButton onClick={handleSubmit}>Salvar</SubmitButton>
       {error ? <Label>{error}</Label> : null}
     </Container>
   );
