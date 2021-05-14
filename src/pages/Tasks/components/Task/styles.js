@@ -3,14 +3,20 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const Container = styled.KeyboardAvoidingView`
   padding: 10px;
-  border-radius: 10px;
-  height: 60px;
+  height: 65px;
+  max-height: 120px;
   width: 100%;
-  border: 1px solid #be70cb;
   flex-direction: row;
   margin-bottom: 8px;
   justify-content: center
   align-items: center;
+  border-width: 1;
+  border-radius: 3;
+  border-color: #dedede;
+  shadow-color: #be70cb;
+  shadow-offset: {width: 1, height: 4};
+  shadow-opacity: 0.8;
+  elevation: 1;
 `;
 
 export const Label = styled.Text`
@@ -20,7 +26,7 @@ export const Label = styled.Text`
 `;
 
 export const TaskWrapper = styled.View`
-  width: 65%;
+  width: 60%;
   height: 100%;
   justify-content: center
 `;
@@ -30,6 +36,7 @@ export const IconsWrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   width: 30%;
+  padding: 0px 4px;
 `;
 export const EditIcon = styled(Icon)`
   color: #000000;

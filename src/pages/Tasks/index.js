@@ -6,11 +6,7 @@ import NewTask from './components/NewTask';
 import {Container, Header, LoadingIcon, List} from './styles';
 
 export default function Tasks({navigation}) {
-  const {
-    tasks,
-    refreshTasks,
-    loading,
-  } = useApiContext();
+  const {tasks, refreshTasks, loading} = useApiContext();
 
   useEffect(() => {
     refreshTasks();
@@ -25,13 +21,15 @@ export default function Tasks({navigation}) {
       {loading ? (
         <LoadingIcon name="spinner" />
       ) : (
-        <List
-          data={tasks}
-          keyExtractor={item => item._id}
-          renderItem={({item}) => <Task task={item} />}
-          ListFooterComponent={<NewTask />}
-          extraData={tasks}
-        />
+        <React.Fragment>
+          <List
+            data={tasks}
+            keyExtractor={item => item._id}
+            renderItem={({item}) => <Task task={item} />}
+            extraData={tasks}
+          />
+          <NewTask />
+        </React.Fragment>
       )}
     </Container>
   );
