@@ -3,10 +3,13 @@ import Title from '../../components/Title';
 import {useApiContext} from './../../contexts/apiContext';
 import Task from './components/Task';
 import NewTask from './components/NewTask';
+import UpdateTask from './components/UpdateTask';
 import {Container, Header, LoadingIcon, List} from './styles';
 
 export default function Tasks({navigation}) {
   const {tasks, refreshTasks, loading} = useApiContext();
+
+  const [selectedTask,setSelected] = useState(null);
 
   useEffect(() => {
     refreshTasks();
@@ -25,10 +28,10 @@ export default function Tasks({navigation}) {
           <List
             data={tasks}
             keyExtractor={item => item._id}
-            renderItem={({item}) => <Task task={item} />}
+            renderItem={({item}) => <Task task={item} select={setSelected}/>}
             extraData={tasks}
           />
-          <NewTask />
+          {selectedTask!=null ? <UpdateTask task={selectedTask}  select={setSelected}/>:<NewTask />}
         </React.Fragment>
       )}
     </Container>

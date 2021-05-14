@@ -9,29 +9,22 @@ import {
   TaskWrapper,
 } from './styles';
 
-export default function Task({task}) {
-  const {deleteTask, updateTask} = useApiContext();
+export default function Task({task,select}) {
+  const {deleteTask} = useApiContext();
 
   async function handleSubmitDelete() {
-    console.log(task._id);
     const response = await deleteTask(task._id);
   }
 
   async function handleSubmitEdit() {
-    const response = await updateTask(task._id, task);
-  }
-
-  function priority() {
-    if(task.highPriority == true)
-        return "Alta"
-    return "Baixa"
+    select(task);
   }
 
   return (
     <Container>
       <TaskWrapper>
         <Label>{task.name}</Label>
-        <Label>{priority()}</Label>
+        <Label>{task.highPriority?"Alta":"Baixa"}</Label>
       </TaskWrapper>
       <IconsWrapper>
         <EditIcon name="edit" onPress={handleSubmitEdit} />

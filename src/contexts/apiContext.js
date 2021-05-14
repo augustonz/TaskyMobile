@@ -46,9 +46,10 @@ export function ApiContextProvider({children}) {
     setLoading(true);
 
     const token = user.token_list[0];
-    await api.updateTask(id, task, token);
-
+    const response = await api.updateTask(id, task, token);
     await refreshTasks();
+
+    return response;
   };
 
   const deleteTask = async id => {
