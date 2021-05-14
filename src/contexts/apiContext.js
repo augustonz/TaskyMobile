@@ -8,7 +8,7 @@ const ApiContext = createContext({
   deleteTask: (id, task) => {},
   loading: false,
   sortPriority: false,
-  setSorting: (sort) => {},
+  setSorting: sort => {},
   refreshTasks: () => {},
   user: {},
   login: user => {},
@@ -22,13 +22,13 @@ export function ApiContextProvider({children}) {
   const [user, setUser] = useState(null);
   const [sortPriority, setSortPriority] = useState(false);
 
-  const setSorting = async (val) => {
+  const setSorting = async val => {
     setSortPriority(val);
-  }
+  };
 
-  useEffect(async()=>{
+  useEffect(async () => {
     await refreshTasks();
-  },[sortPriority]);
+  }, [sortPriority]);
 
   const refreshTasks = async () => {
     setLoading(true);
@@ -124,7 +124,7 @@ export function ApiContextProvider({children}) {
         login,
         register,
         logout,
-        setSorting
+        setSorting,
       }}>
       {children}
     </ApiContext.Provider>
