@@ -1,35 +1,39 @@
-import React,{useEffect, useState} from 'react'
+import React, {useEffect} from 'react';
 import Title from '../../components/Title';
-import { useApiContext } from './../../contexts/apiContext';
+import {useApiContext} from './../../contexts/apiContext';
 import Task from './components/Task';
 import NewTask from './components/NewTask';
-import { Container, Header, LogoutIcon, LoadingIcon, List} from './styles'
+import {Container, Header, LoadingIcon, List} from './styles';
+import Loading from '../../components/Loading';
 
-export default function Tasks({navigation}){
+export default function Tasks({navigation}) {
+  const {
+    tasks,
+    refreshTasks,
+    loading,
+  } = useApiContext();
 
-    const {user,tasks,addTask,refreshTasks,deleteTask,updateTask,loading, logout} = useApiContext();
+  useEffect(() => {
+    refreshTasks();
+  }, []);
 
-    const [error,setError] = useState('');
+  return (
+    <Container>
+      <Header>
+        <Title text="Minhas Tasks" />
+      </Header>
 
-
-    useEffect(()=>{
-        refreshTasks();
-    },[])
-
-    return(
-        <Container>
-            
-            <Header>
-                <Title text='My Tasks'/>    
-            </Header>
-
-            {loading?<LoadingIcon name='spinner'/>:
-            <List data={tasks}
-                keyExtractor = {item => item._id}
-                renderItem={({item})=><Task task={item}/>}
-                ListFooterComponent={<NewTask/>}
-                extraData={tasks}/>}
-            
-        </Container>
-    )
+      {loading ? (
+        <Loading />
+      ) : (
+        <List
+          data={tasks}
+          keyExtractor={item => item._id}
+          renderItem={({item}) => <Task task={item} />}
+          ListFooterComponent={<NewTask />}
+          extraData={tasks}
+        />
+      )}
+    </Container>
+  );
 }

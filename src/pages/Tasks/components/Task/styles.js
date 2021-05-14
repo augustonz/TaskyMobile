@@ -2,38 +2,38 @@ import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const Container = styled.KeyboardAvoidingView`
-    padding: 10px;
-    border-radius: 10px;
-    height: 72px;
-    width: 100%;
-    border: 1px solid #000000;
-    flex-direction: row;
-    margin-bottom: 8px;
-`
+  padding: 10px;
+  border-radius: 10px;
+  height: 72px;
+  width: 100%;
+  border: 1px solid #000000;
+  flex-direction: row;
+  margin-bottom: 8px;
+`;
 
 export const Label = styled.Text`
-    font-size: 16px;
-    font-weight: 700;
-    color: #000000;
-`
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+`;
 
 export const TaskWrapper = styled.View`
-    width: 65%;
-    height: 100%;
-`
+  width: 65%;
+  height: 100%;
+`;
 
 export const IconsWrapper = styled.View`
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between; 
-    width: 30%;
-`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+`;
 export const EditIcon = styled(Icon)`
   color: #000000;
   font-size: 24px;
 `;
 
 export const DeleteIcon = styled(Icon)`
-  color: #FF8989;
+  color: #ff8989;
   font-size: 24px;
 `;

@@ -22,10 +22,3 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
-
-
-
-export const LoadingIcon = styled(Icon)`
-  color: #000000;
-  font-size: 50px;
-`;

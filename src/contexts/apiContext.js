@@ -4,30 +4,30 @@ import * as api from '../services/api';
 const ApiContext = createContext({
   tasks: [],
   addTask: task => {},
-  updateTask: (id,task) => {},
-  deleteTask: (id,task) => {},
+  updateTask: (id, task) => {},
+  deleteTask: (id, task) => {},
   loading: false,
   refreshTasks: () => {},
   user: {},
   login: user => {},
   register: user => {},
-  logout: () => {}
+  logout: () => {},
 });
 
 export function ApiContextProvider({children}) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [user,setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   const refreshTasks = async () => {
     setLoading(true);
 
-    if (user){
+    if (user) {
       const token = user.token_list[0];
       const tasks = await api.getTasks(token);
       setTasks(tasks);
     }
-    
+
     setLoading(false);
   };
 
@@ -35,27 +35,27 @@ export function ApiContextProvider({children}) {
     setLoading(true);
 
     const token = user.token_list[0];
-    const response = await api.createTask(task,token);
+    const response = await api.createTask(task, token);
 
     await refreshTasks();
 
     return response;
   };
 
-  const updateTask = async (id,task) => {
+  const updateTask = async (id, task) => {
     setLoading(true);
 
     const token = user.token_list[0];
-    await api.updateTask(id,task,token);
+    await api.updateTask(id, task, token);
 
     await refreshTasks();
   };
 
-  const deleteTask = async (id) => {
+  const deleteTask = async id => {
     setLoading(true);
 
     const token = user.token_list[0];
-    await api.deleteTask(id,token);
+    await api.deleteTask(id, token);
 
     await refreshTasks();
   };
@@ -69,7 +69,7 @@ export function ApiContextProvider({children}) {
     setLoading(false);
 
     return response;
-  }
+  };
 
   const register = async user => {
     setLoading(true);
@@ -79,8 +79,7 @@ export function ApiContextProvider({children}) {
 
     setLoading(false);
 
-    return  response;
-    
+    return response;
   };
 
   const logout = async () => {
@@ -88,7 +87,7 @@ export function ApiContextProvider({children}) {
 
     const token = user.token_list[0];
     const response = await api.logout(token);
-    
+
     setLoading(false);
 
     return response;
@@ -96,8 +95,18 @@ export function ApiContextProvider({children}) {
 
   return (
     <ApiContext.Provider
-      value={{tasks, loading, user, refreshTasks, addTask, updateTask, deleteTask, 
-      login, register, logout}}>
+      value={{
+        tasks,
+        loading,
+        user,
+        refreshTasks,
+        addTask,
+        updateTask,
+        deleteTask,
+        login,
+        register,
+        logout,
+      }}>
       {children}
     </ApiContext.Provider>
   );

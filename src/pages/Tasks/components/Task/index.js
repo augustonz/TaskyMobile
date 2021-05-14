@@ -21,11 +21,17 @@ export default function Task({task}) {
     const response = await updateTask(task._id, task);
   }
 
+  function priority() {
+    if(task.highPriority == true)
+        return "Alta"
+    return "Baixa"
+  }
+
   return (
     <Container>
       <TaskWrapper>
         <Label>{task.name}</Label>
-        <Label>{task.highPriority}</Label>
+        <Label>{priority()}</Label>
       </TaskWrapper>
       <IconsWrapper>
         <EditIcon name="edit" onPress={handleSubmitEdit} />
