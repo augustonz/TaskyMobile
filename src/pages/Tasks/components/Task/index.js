@@ -24,7 +24,7 @@ export default function Task({task,select}) {
     <Container>
       <TaskWrapper>
         <Label>{task.name}</Label>
-        <Label>{task.highPriority?"Alta":"Baixa"}</Label>
+        <Label>{task.highPriority?"Prioridade: Alta":"Prioridade: Baixa"}</Label>
       </TaskWrapper>
       <IconsWrapper>
         <EditIcon name="edit" onPress={handleSubmitEdit} />
